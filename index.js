@@ -45,10 +45,26 @@ inquirer.prompt([
         type: "input",
         name: "install",
         message: "How do you install your project? Please provide a step-by-step description on how to get the development environment running."
-    },{
+    },
+    {
         type: "input",
         name: "usage",
         message: "How do you use your project? Please provide instructions and examples for use."
+    },
+    {
+        type: "input",
+        name: "contributing",
+        message: "Would you like other developers to contribute?  If so, under what guidelines?"
+    },
+    {
+        type: "input",
+        name: "license",
+        message: "What license are you using?"
+    },
+    {
+        type: "input",
+        name: "tests",
+        message: "Have you written tests for your app? If so, please provide examples on how to run them."
     }
 
 ]).then(data => {
