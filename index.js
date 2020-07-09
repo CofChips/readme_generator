@@ -8,7 +8,7 @@ const why = "[![start with why](https://img.shields.io/badge/start%20with-why%3F
 
 const hits = "[![HitCount](http://hits.dwyl.com/CofChips/weather_dashboard.svg)](http://hits.dwyl.com/CofChips/weather_dashboard)"
 
-let repo = "![GitHub repo size](https://img.shields.io/github/repo-size/"+username+"/"+repo+")"
+// let repo = "![GitHub repo size](https://img.shields.io/github/repo-size/"+username+"/"+repo+")"
 
 inquirer.prompt([
     {
@@ -65,6 +65,11 @@ inquirer.prompt([
         type: "input",
         name: "tests",
         message: "Have you written tests for your app? If so, please provide examples on how to run them."
+    },
+    {
+        type: "input",
+        name: "questions",
+        message: "Any questions you'd like to ask your visitors?"
     }
 
 ]).then(data => {
@@ -114,18 +119,28 @@ inquirer.prompt([
             }
         })
     }
-    fs.appendFile(filename, "## " + "Description" + '\n' + data.description + '\n' + "## " + "Installation" + '\n' + data.install + '\n', function (err) {
+    fs.appendFile(filename, "## " + "Description" + '\n' + data.description + '\n', function (err) {
         if (err) {
             console.log(err);
         }
         else {
-            console.log("Description and Installation logged!");
+            console.log("Description logged!");
         }
     })
 
+    fs.appendFile(filename, "## " + "Table of Contents" + '\n' + "* [Installation](#installation)" + '\n'+ "* [Usage](#usage)" + '\n' + "* [License](#license)" + '\n' + "* [Contributing](#contributing)" + '\n' + "* [Tests](#tests)" + '\n' + "* [Questions](#questions)" + '\n'+"## " + "Installation" + '\n' + data.install + '\n'+"## " + "Usage" + '\n' + data.usage + '\n'+"## " + "License" + '\n' + data.license + '\n'+"## " + "Contributing" + '\n' + data.contributing + '\n'+"## " + "Tests" + '\n' + data.tests + '\n'+"## " + "Questions" + '\n' + data.questions + '\n', function (err) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log("Table of contents, installation, usage, license, contributing, tests, and questions logged!");
+        }
+    })
 //     * [Installation](#installation)
 // * [Usage](#usage)
-// * [Credits](#credits)
 // * [License](#license)
-
+// * [Contributing](#contributing)
+// * [Tests](#tests)
+// * [Questions](#questions)
+// + "## " + "Installation" + '\n' + data.install + '\n'
 })
